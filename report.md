@@ -11,7 +11,7 @@ The aim of the following work is to present a strategy for generating tabular sy
 
 [Language Models are Realistic Tabular Data Generators](https://arxiv.org/pdf/2210.06280) introduced in 2023 a methodology named **GReaT** for generating tabular synthetic data using pre-trained large language models. The core of the work is to preprocess a tabular dataset, with $m$ features $f_1\dots f_m$ and $n$ rows $s_1\dots s_n$, into a set of strings $\textbf{t}=[t_i]_{i=1\dots n}$ such that:
 
-$$ t_{i,j}= f_j \text{ is } v_{i,j} \quad \forall \, i \in [1,...,n], j \in [1,...,m]$$
+$$ t_{i,j}= f_j \text{ is } v_{i,j} \quad \forall  i \in [1,...,n], j \in [1,...,m]$$
 
 $$t_i = \text{``}t_{i,1}, t_{i,2},...,t_{i,m}\text{"} \quad \forall i \in [1,...,n]$$
 
