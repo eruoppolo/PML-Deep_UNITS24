@@ -39,7 +39,7 @@ As a result, the **GReaT** method is particularly flexible and could possibly be
 
 **TabuLa** develops the framework provided by **GReaT** trying to increase its efficiency. In particular it proposes a new approach in:
 
-- **Preprocessing**: as GReaT does, Tabula makes sentences from tabular datasets and permutes them to lose the pseudo-positional order they could represent. But, instead of having such a string "$X$ is $Y$", tabula simplify the structure giving to the model sentences like "$X$ $Y$" where $X$ is the variable name and $Y$ is the value of the variable. 
+- **Preprocessing**: as GReaT does, TabuLa makes sentences from tabular datasets and permutes them to lose the pseudo-positional order they could represent. But, instead of having such a string "$X$ is $Y$", tabula simplify the structure giving to the model sentences like "$X$ $Y$" where $X$ is the variable name and $Y$ is the value of the variable. 
 
 - **Tokenization**: it evaluates the token lengths of all column names and values in categorical columns, simplifying these names and values to ensure they are tokenized into just one token. Column names and categorical values can be either reduced or substituted with a synonymous term. This allows the LLM to correlate them with other values. This tecnique and the different preprocessing helps token sequence length to be sharply reduced compared to **GReaT**. 
   
@@ -59,10 +59,10 @@ Doing so the LLM should understand the dependacy between $k$ sequential observat
 
 In order to evaluate if the model generates optimal synthetic data, we employed the following evaluations:
 
-- **EDA**: We confront with a accuratare explanatory data analysis the real and the synthetic data. First of all by computing and visualizing the marginal feature distributions, and computing them the $\text{KL}$-divergence between the real and the sythetic marginal distributions, expecting this to be as smaller as possible. Moreover dealing with temporal data we compare the temporal trends, annual and daily where possible, expecting them to present similar patterns.
+- **EDA**: We confront with an accurate explanatory data analysis the real and the synthetic data. First of all by computing and visualizing the marginal feature distributions, and then computing the $\text{KL}$-divergence between the real and the sythetic marginal distributions, expecting this to be as smaller as possible. Moreover dealing with temporal data we compare the temporal trends, annual and daily where possible, expecting them to present similar patterns.
 
 
-- **Discriminator measure**: merging and shuffling the synthetic data generated and the original dataset, we added a binary feature representing if the given observation is synthetic or not. We trained a Random Forest model for binary classification and we then report the test accuracy on a test data set, which contains equal shares of samples from the generated test set and the real test set. The model is expected to perform as a random classifier $\text{Acc}\simeq0.5$, a lower accuracy could report that the synthetic rows are too similar to the real ones (even copied), while an higher could report that they are too different and easily detectable.
+- **Discriminator measure**: merging and shuffling the synthetic data generated and the original dataset, we added a binary feature representing if the given observation is synthetic or not. We trained a Random Forest model for binary classification and we then report the test accuracy on a test data set, which contains equal shares of samples from the generated test set and the real test set. The model is expected to perform as a random classifier $\text{Acc}\simeq0.5$; a lower accuracy could report that the synthetic rows are too similar to the real ones (even copied), while an higher could report that they are too different and easily detectable.
 
 - **Copied values counter**: since we generated sytnhetic data from a pre-existing time stamp we implemented a counter that compares the real rows with the synthetic one. For each it counted the occurences in which the value of a feature in a synthetic row was just copied from the real instance. We then plotted the results with a barplot to visualize the distribution of copied values per row.
 
@@ -70,7 +70,7 @@ In order to evaluate if the model generates optimal synthetic data, we employed 
 
 - **Machine learning efficiency** (**MLE**): Since the generated data set should be able to replace the real data in a training process, to test the generation quality of categorical variables, this measure evaluates the performance of a discriminative model trained on the synthetic dataset and tested on the real data, comparing it with the performances of the same model trained and tested on the real data. Even if a dataset is not made for classification tasks, setting as target variable a categorical variable, being it binary or not, we expect the two discriminative models to have comparable performances. 
 
-- **Autocorrelation within lags**: As last try we computed the autocorrelation between lags $\rho(k)$, defined as $\rho(k) = \gamma(k) / \gamma(0)$. If we indicate $x_t$ the value of a feature at time $t$, $\mu$  the mean of that feature over the time, this metric measures how a preceding value influences one that follow, if the model really understands the temporal nature of the data we should expect the same patterns in this metric between the real and synthetic datal. The autocovariance $\gamma(k)$ for the $k$-th lag is:
+- **Autocorrelation within lags**: As last try we computed the autocorrelation between lags $\rho(k)$, defined as $\rho(k) = \gamma(k) / \gamma(0)$. If we indicate $x_t$ the value of a feature at time $t$, $\mu$  the mean of that feature over the time, this metric measures how a preceding value influences one that follow, if the model really understands the temporal nature of the data we should expect the same patterns in this metric between the real and synthetic data. The autocovariance $\gamma(k)$ for the $k$-th lag is:
 
 $$\gamma(k) = \mathbb{E}[(x_t - \mu)(x_{t+k} - \mu)]$$
 
