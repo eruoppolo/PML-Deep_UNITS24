@@ -163,16 +163,16 @@ We see that the disributions seem to be comparable, meaning that the model has b
 |-----|:------:|:---------:|:---------:|:---------:|
 | $KL_{p\parallel q}$ | $0.29$ |   $0.29$  | $0.08$  |$0.10$  |
 
-We then compared the temporal behavior within the real and the synthetic data, to check if it was respected or not. First we see the behavior within a 3 years range. We see that even not replicating the real values, the syntetic data seems to behave as the real, showing to increase and the decrease when the original data do.
+We then compared the temporal behavior within the real and the synthetic data, to check if it was respected or not. First we see the behavior within a 3 years range. We see that even not replicating the real values, the synthetic data seems to behave as the real, showing to increase and to decrease when the original data do.
 
 <img src="images/trends.png" alt="data trends" width="800"/>
-We then inspected the daily trends for each of the variables and each of the week days. Since the dataset provided a variable for days we analyzed the trend trough the years given a day of all thr variables. Here we see two of them and looking at the plots we can see that the syntetic data behaves as the original for all the features, meaning that somehow the model understood the daily patterns and was able to replicate them.
+We then inspected the daily trends for each of the variables and each of the week days. Since the dataset provided a variable for days we analyzed the trend trough the years given a day of all the variables. Here we see two of them and looking at the plots we can see that the syntetic data behaves as the original for all the features, meaning that somehow the model understood the daily patterns and was able to replicate them.
 
 <img src="images/Monday_trend.png" alt="monday trends" width="800"/>
 
 <img src="images/Friday_trend.png" alt="friday trendss" width="800"/>
 
-As the previous plots suggests the model is able to understand the patterns within the week days. The following barplots confirms this. Here we are represented the averages values for each of the variables, day by day. We see the synthetic data well describes the behavior of the variables within the days.
+As the previous plots suggests the model is able to understand the patterns within the week days. The following barplots confirms this. Here we are representing the averages values for each of the variables, day by day. We see the synthetic data well describes the behavior of the variables within the days.
 
 <img src="images/daywise_avg.png" alt="daily averages" width="800"/>
 
@@ -182,7 +182,7 @@ These barplots show a wider sight on the distributions of all the variables day 
 
 ### Copied values
 
-We saw that the sytnetic data seems to have the same characteristics of the real ones, with similar distributions and temporal behaviour. This could be due to a mere copy of the the real data, we then want to ensure that the syntetic data geenration gone well. To do this as first isnight we provide a barplot that show the number of copied values per row. To build this the real and synthetic datasets common rows (with same timestamp) have been compared, and the equal feature-value pairs have been counted. We see that applying the time-wise framework almost $99\%$ of the rows have no common values, while only abuot $1\%$ of the rows have only one common value. 
+We saw that the sytnetic data seems to have the same characteristics of the real ones, with similar distributions and temporal behaviour. This could be due to a mere copy of the real data, we then want to ensure that the syntetic data geenration gone well. To do this as first isnight we provide a barplot that show the number of copied values per row. To build this the real and synthetic datasets common rows (with same timestamp) have been compared, and the equal feature-value pairs have been counted. We see that applying the time-wise framework almost $99\%$ of the rows have no common values, while only abuot $1\%$ of the rows have just one common value. 
 
 <img src="images/matching_values.png" alt="equals counter" width="800"/>
 
@@ -204,7 +204,7 @@ A greater synthetic-real DCR indicates that the synthetic datapoint is more dist
 
 Interpreting synthetic-real DCRs can be challenging because synthetic data points are designed to fall within the same range as the original data, increasing the likelihood of proximity to a real record. To address this, we compare the distribution of distances between synthetic records and real records with the distribution of distances among real records themselves. If the synthetic data is similar or farther from the real data compared to the real data's internal distances, it implies that the synthetic data provides good privacy and is not merely a copy or simple perturbation of the real data.
 
-Here we compare the DCR distribution of the time-wise framework generated data (first image) with the one generated from the original framework. We see ho the syntetic distribution median moves from $m_s=21$ to $m_s=70$, being the real $m_r=43$ with all the previous results this means that the synthetically generated data guarantee privacy, being not only a perturbation of the real data but a re-generated set that shares the real data characteristics while not merely copying them.
+Here we compare the DCR distribution of the time-wise framework generated data (first image) with the one generated from the original framework. We see how the syntetic distribution median moves from $m_s=21$ to $m_s=70$, being the real $m_r=43$ with all the previous results this means that the synthetically generated data guarantee privacy, being not only a perturbation of the real data but a re-generated set that shares the real data characteristics while not merely copying them.
 
 
 <img src="images/DCR.png" alt="dcr" width="800"/>
@@ -213,12 +213,12 @@ Here we compare the DCR distribution of the time-wise framework generated data (
 
 ### Discriminator and Machine Learning efficiency metrics
 
-Here we present two other metrics useful for the data wuality evaulation:
+Here we present two other metrics useful for the data quality evaulation:
 
 - **ML discriminator**: this metric tries to detect synthetic data, in order to evaluate if these present any pattern that a ML model would find. It is implmented as a RandomForest classifier, the datasets have been labeled as `Real: 0` or `Synthetic: 1`, then merged and shuffled. On the merged dataset a static train-test-split has been applied.
-- **Machine learning efficiency** (**MLE**): this metric compares the performaces, in terms of efficiency, of a simple machine learning model on the data, analyzing the efficiency of synthetic data with respect to the real ones. To do this the model is trained on the synthetic data and tested on the real. Its accuracy is then compared the accuracy of the model when trained and testd on the real data. As model we use a simple ``RandomForest`` classifier, using as target variable ``Day.Of.Week``.
+- **Machine learning efficiency** (**MLE**): this metric compares the performaces, in terms of efficiency, of a simple machine learning model on the data, analyzing the efficiency of synthetic data with respect to the real ones. To do this the model is trained on the synthetic data and tested on the real. Its accuracy is then compared to the accuracy of the model when trained and testd on the real data. As model we use a simple ``RandomForest`` classifier, using as target variable ``Day.Of.Week``.
 
-We see that the results coming from the time wise framework confirm its worth. The discriminator has performances comparable with those of a random classifier, while in the original framework they are lower, meaning that the synthetic data and the real data are similar, even the same, as we saw above. Regarding MLE the time-wise framework shows similar performances in all the cases. We specify thar both weather and web dataset were not made for classification, thus the accuracy performances are pretty low. Anyway the models trained on real and synthetic data performs in a similar way, confirming that the syntetic data can replace the real ones without loosing efficiency. We see instead that in the original data the MLE is higher for Synthetic-Real train-test. This could denote that the synthetic data, being too similar to the real can improve the classification performance while showing in the training phase to the model the same data it classifies in the test phase.
+We see that the results coming from the time wise framework confirm its worth. The discriminator has performances comparable with those of a random classifier, while in the original framework they are lower, meaning that the synthetic data and the real data are similar, even the same, as we saw above. Regarding MLE, the time-wise framework shows similar performances in all the cases. We specify that both weather and web dataset were not made for classification, thus the accuracy performances are pretty low. Anyway the models trained on real and synthetic data performs in a similar way, confirming that the syntetic data can replace the real ones without loosing efficiency. We see instead that in the original data the MLE is higher for Synthetic-Real train-test. This could denote that the synthetic data, since they are too similar to the real one, they can improve the classification performance showing in the training phase to the model the same data it classifies in the test phase.
 ### Time-wise framework
 |               | Weather | Energy |   Web  |
 |---------------|:-------:|:------:|:------:|
@@ -234,7 +234,7 @@ We see that the results coming from the time wise framework confirm its worth. T
 
 ### Autocorrelation
 
-The last results we present deal with the autocorrelation metric. We report the autocorrelations within 4 lags of some of the variables. Here we see that our model fails. Indeed, while the model is able to simulate the real data ensuring the same statistics and a good level of privacy, this metrics shows that it is not able to understand the real data sequential nature. The autocorrelations within a lag and the followings is constant and does not folow the real pattern. This is clearly due to the generation process, that is done indepentently for each of the rows without really conditioning it on the previous generated values. Thus even if the model can reproduce the time dependant behavior of the system, it does not learn its deep nature, but only simulates its punctual behavior thanks to the windowing that makes possible to understand a possible range of values given the others.
+The last results we present deal with the autocorrelation metric. We report the autocorrelations within 4 lags of some of the variables. Here we see that our model fails. Indeed, while the model is able to simulate the real data ensuring the same statistics and a good level of privacy, this metric shows that it is not able to understand the real data sequential nature. The autocorrelations within a lag and the followings is constant and does not folow the real pattern. This is clearly due to the generation process, that is done indepentently for each of the rows without really conditioning it on the previous generated values. Thus even if the model can reproduce the time dependant behavior of the system, it does not learn its deep nature, but only simulates its punctual behavior thanks to the windowing that makes possible to understand a possible range of values given the others.
 ### page.loads autocorrelation
 | Lag |  Real  | Synthetic |
 |-----|:------:|:---------:|
