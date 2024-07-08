@@ -148,7 +148,7 @@ This baseline served us to test how the information is carried from the variable
 
 ### EDA
 
-Here we examine the results of the last-generated data of "Web" dataset. The dataset has 4 numerical features, that examine some website traffic statistics, a time feature, that indicates the timestamp, and a categorical feature ``day.of.week`` with values in [0,6] that indicates the seven week days. After preprocessing the data and fine-tuned the model, the synthetic dataset has been generated. First of all we examine the marginal distributions of the continuous variables, analyzing as comparison metrci the KL divergence between the real and synthetic distribution, computed as:
+Here we examine the results of the last-generated data of "Web" dataset. The dataset has 4 numerical features, that examine some website traffic statistics, a time feature, that indicates the timestamp, and a categorical feature ``day.of.week`` with values in [0,6] that indicates the seven week days. After preprocessing the data and fine-tuned the model, the synthetic dataset has been generated. First of all we examine the marginal distributions of the continuous variables, analyzing as comparison metric the KL divergence between the real and synthetic distribution, computed as:
 
 $$ D_{KL}(P^{(\text{r})} \parallel Q^{(\text{s})}) = \sum_{i} p_i \log \left( \frac{p_i^{(\text{r})}}{q_i^{(\text{s})}} \right)
  $$
