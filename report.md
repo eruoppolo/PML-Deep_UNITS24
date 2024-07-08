@@ -37,7 +37,7 @@ As a result, the **GReaT** method is particularly flexible and could possibly be
 
 ## [TabuLa: Harnessing Language Models for Tabular Data Synthesis](https://arxiv.org/abs/2310.12746) 
 
-**Tabula** develops the framework provided by **GReaT** trying to increase its efficiency. In particular it proposes a new approach in:
+**TabuLa** develops the framework provided by **GReaT** trying to increase its efficiency. In particular it proposes a new approach in:
 
 - **Preprocessing**: as GReaT does, Tabula makes sentences from tabular datasets and permutes them to lose the pseudo-positional order they could represent. But, instead of having such a string "$X$ is $Y$", tabula simplify the structure giving to the model sentences like "$X$ $Y$" where $X$ is the variable name and $Y$ is the value of the variable. 
 
