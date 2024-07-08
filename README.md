@@ -1,6 +1,6 @@
 # PML-Deep_UNITS24
 
-# Universal Tabular Data Generator
+# Multivariate time series synthetic data generation
 
 ## Authors
 [Alessandro Minutolo](mailto:ALESSANDRO.MINUTOLO@studenti.units.it), [Emanuele Ruoppolo](mailto:EMANUELE.RUOPPOLO@studenti.units.it)
