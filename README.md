@@ -20,4 +20,5 @@ This repository contains all the data and code for the project which aims to use
 2. Apply the existing framework [TabuLa](https://arxiv.org/abs/2310.12746) to this problem modifying its features to adapt it to time series data.
 
 ## Models
+
 - [DistilGPT-2]([https://huggingface.co/openai-community/gpt2?text=Once+upon+a+time%2C](https://huggingface.co/distilbert/distilgpt2))
