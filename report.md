@@ -146,7 +146,7 @@ This process increased the data quality, as the evaluation confirms. While the e
 
  First we remark the generation process for testing the original framework. In order to have a baseline for our results we tested the **TabuLa** model, as originally presented, on the selected datasets. To do this we simply trained from scratch the model on each of the datasets $D$, without breaking the timestamps and creating temporal windows, and then generated synthetic data from the following chronologically ordered conditioning prompts:
 
-$$p_i = \text{`` }d_i/m_i/y_i\text{"}\quad\forall\,i\leq |D|$$  
+$$p_i = \text{`` }d_i/m_i/y_i\text{"}\quad\forall\quad i\leq |D|$$  
 
 This baseline served us to test how the information is carried from the variables, suposing that a time stamp so built, being unique, would sufficiently carry all the information, leading to overfitting. Breaking it instead, allows the model to analyze the relationships within the single time variables, days, months and years, and the other features, as for the modified framework an accurate analysis is provided in the github [repository](https://github.com/eruoppolo/PML-Deep_UNITS24/tree/main/original_framework), while here there is a partial amount of results.
 
