@@ -21,4 +21,4 @@ This repository contains all the data and code for the project which aims to use
 
 ## Models
 
-- [DistilGPT-2]([https://huggingface.co/openai-community/gpt2?text=Once+upon+a+time%2C](https://huggingface.co/distilbert/distilgpt2))
+- [DistilGPT-2](https://huggingface.co/distilbert/distilgpt2)
