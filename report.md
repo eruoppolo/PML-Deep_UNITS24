@@ -17,6 +17,8 @@ $$t_i = \text{``}t_{i,1}, t_{i,2},...,t_{i,m}\text{"} \quad \forall i \in [1,...
 
 Also, in each string, in order to prevent the model from learning any kind of positional pattern, the order of the feature-value pairs is permuted. To do this, the permutation function applies a random feature permutation $k$ to $t_i$. Considering an arbitrary $k_j \in [1,...,n]$ such that $k_j \ne k_{j'}$ for $j \ne j'$, the permutation is defined as: $$t_i(k) = \text{``}t_{i,k_1}, t_{i,k_2}, ..., t_{i,k_m}\text{"} \quad \forall i \in [1,...,n]$$
 
+<img src="images/great1.png" alt="great pipeline" width="800"/>
+
 ### Fine-tuning a pre-trained auto-regressive language model
  Considering a textually encoded tabular dataset $T=\{t_i(k_i)\}_{i=1,...,n}$, let $k_i$ be random permutations and $n$ the number of rows. The input sentences $t_i \in T$ need to be encoded in a sequence of tokens from a discrete and finite vocabulary $W$. Thus, $t_i \in T$ is represented by a sequence of tokens $(w_1, ... ,w_j) = \texttt{TOKENIZE}(t_i)$ with tokens $w_1, ... , w_j \in W$, where $j$ denotes the number of tokens required to describe the sequence $t_i$. The probability of having any natural-language squence is represented as a product of output probabilities conditioned on previously observed tokens, namely it is factorized in an auto-regressive manner: 
 
@@ -35,6 +37,8 @@ By providing the textual encoding of this condition, we are able to sample from 
 
 As a result, the **GReaT** method is particularly flexible and could possibly be used in a variety of real-world problems such as missing value imputation and of course synthetic data generation.
 
+<img src="images/great2.png" alt="great sampling" width="800"/>
+
 ## [TabuLa: Harnessing Language Models for Tabular Data Synthesis](https://arxiv.org/abs/2310.12746) 
 
 **TabuLa** develops the framework provided by **GReaT** trying to increase its efficiency. In particular it proposes a new approach in:
@@ -45,6 +49,7 @@ As a result, the **GReaT** method is particularly flexible and could possibly be
   
 -  **Model choise**: Given the disparity between the pre-trained domain and the task domain, the fine-tuning on this pre-trained model may not be as efficient as expected. **TabuLa** operates on a randomly initialized LLM model devoid of prior knowledge. Omitting the word 'is' because the more concise "X Y" format is not only more efficient but also potentially simpler to learn due to its brevity.
 
+<img src="images/TabuLa1.png" alt="tabula pipeline" width="800"/>
 
 # Our Strategy
 
